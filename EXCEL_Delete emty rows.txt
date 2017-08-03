@@ -1,0 +1,9 @@
+Sub deleteSheetLowCount()
+Dim lastRow As Long
+lastRow = ActiveSheet.Cells(Rows.Count, "A").End(xlUp).Row
+For Each Ws In ActiveWorkbook.Worksheets
+    Application.DisplayAlerts = False
+    If lastRow < 15 Then Ws.Delete
+Next
+Application.DisplayAlerts = True
+End Sub

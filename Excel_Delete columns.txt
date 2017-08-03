@@ -1,0 +1,15 @@
+Sub deleteColumns()
+
+Dim ws As Worksheet
+
+For Each ws In ActiveWorkbook.Worksheets
+ws.Columns("T:U").EntireColumn.Delete
+ws.Columns("N:Q").EntireColumn.Delete
+ws.Columns("H:I").EntireColumn.Delete
+ws.Columns("A:E").EntireColumn.Delete
+
+
+Next ws
+
+End Sub
+

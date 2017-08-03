@@ -1,0 +1,22 @@
+Option Explicit
+
+Sub replaceMissing()
+    Dim r As Range, cell As Range, mynumber As String
+
+    Set r = Range("K:K")
+
+  
+    For Each cell In r
+        If cell.Value = "-" Then
+                   
+                   
+                    
+                    cell.Value = cell.Offset(-1).Value
+                    
+             
+            
+        End If
+    Next
+End Sub
+
+

@@ -1,0 +1,17 @@
+Sub renameColumns()
+
+
+Dim strSplit() As String
+Dim cell As Range
+
+For Each cell In Range("J:J")
+
+    If (cell.Value <> vbNullString) Then
+
+        cell.Value = Split(cell.Value, "_")(0)
+
+    End If
+
+Next cell
+
+End Sub

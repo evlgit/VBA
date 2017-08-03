@@ -1,0 +1,27 @@
+Sub createValueAround()
+    Dim r As Range, cell As Range, mynumber As Long
+
+    Set r = Range("A:A")
+    
+
+   For ii = 3 To 8
+
+    
+    For Each cell In r
+
+    
+        If cell.Value = ii Then
+                    Dim i As Integer
+                    For i = 1 To 600
+                    cell.Value = "1_" & CStr(ii)
+                    cell.Offset((-1) * (i) + 1).Value = "1_" & CStr(ii)
+                    cell.Offset(i).Value = "2_" & CStr(ii)
+                     
+                    Next i
+      
+
+
+        End If
+    Next
+Next
+End Sub

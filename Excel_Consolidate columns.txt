@@ -1,0 +1,21 @@
+Sub consolidateColumns()
+If ActiveSheet.Name <> "Master" Then Exit Sub
+c = 1
+
+For Each ws In Worksheets
+
+    If Not (ws Is ActiveSheet) Then
+    
+    
+    a = ws.Cells(Rows.Count, 1).End(xlUp).Row + 1
+    For i = 2 To a
+    ActiveSheet.Cells(i, c).Value = ws.Cells(i - 1, 1).Value
+    Next i
+    ActiveSheet.Cells(1, c) = ws.Name
+        
+    c = c + 1
+    End If
+    
+Next ws
+ActiveSheet.Rows(2).Delete
+End Sub

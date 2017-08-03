@@ -1,0 +1,47 @@
+Sub findMatching()
+    Dim r As Range, cell As Range, mynumber As String
+
+    Set r = Range("C:C")
+    Dim Rng As Range
+    Dim koIeskom As String
+    
+    
+   
+  
+    For Each cell In r
+        If cell.Value = "2" Then
+                 
+                 koIeskom = cell.Offset(0, -1).Value & "_1_" & cell.Offset(0, 1).Value
+                 
+                 With ActiveSheet.Range("A:A")
+                 Set Rng = .Find(What:=koIeskom, _
+                        After:=.Cells(.Cells.Count), _
+                        LookIn:=xlFormulas, _
+                        LookAt:=xlWhole, _
+                        SearchOrder:=xlByRows, _
+                        SearchDirection:=xlNext, _
+                        MatchCase:=False)
+                        
+            
+                        If Not Rng Is Nothing Then
+                          
+                          
+                         cell.Offset(0, 6) = koIeskom
+                         cell.Offset(0, 3) = Rng.Offset(0, 4).Value
+                         cell.Offset(0, 4) = cell.Offset(0, 2).Value - Rng.Offset(0, 4).Value
+                         If (Rng.Offset(0, 4).Value = 0 Or Rng.Offset(0, 4).Value = "-") Then
+                         cell.Offset(0, 5) = "-"
+                         Else
+                         cell.Offset(0, 5) = (cell.Offset(0, 2).Value - Rng.Offset(0, 4).Value) / Rng.Offset(0, 4).Value * 100
+                          End If
+                          End If
+                        
+
+End With
+                  
+                  
+            
+        End If
+    Next
+End Sub
+

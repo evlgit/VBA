@@ -1,0 +1,25 @@
+Public Sub deleteEmtyRows()
+
+    Dim WS  As Worksheet
+    Dim R   As Long
+
+    On Error GoTo EndMacro
+    
+    Application.ScreenUpdating = False
+    Application.Calculation = xlCalculationManual
+    
+    For Each WS In Worksheets
+        With WS.UsedRange
+            For R = .Rows.Count To 1 Step -1
+                If Application.WorksheetFunction.CountA(.Rows(R).EntireRow) = 0 Then
+                    .Rows(R).EntireRow.Delete
+                End If
+            Next R
+        End With
+    Next WS
+    
+EndMacro:
+    Application.ScreenUpdating = True
+    Application.Calculation = xlCalculationAutomatic
+        
+End Sub
